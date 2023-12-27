@@ -2,3 +2,17 @@
   max-width: 1280px;
 }
 
+.app__wrapper {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
+
+.gifts__info {
+  text-align: center;
+}
+
+.gifts__list {
+  margin-top: .25rem;
+  list-style: none;
+}
