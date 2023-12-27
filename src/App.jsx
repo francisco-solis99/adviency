@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-const INITIAL_GIFTS = ['Medias', 'Cramelos', 'Vitel Tone']
+const INITIAL_GIFTS = ['Medias', 'Caramelos', 'Vitel Tone']
 
 function App() {
   const [gifts, setGifts] = useState(INITIAL_GIFTS)

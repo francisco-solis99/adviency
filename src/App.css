@@ -6,9 +6,16 @@
   display: grid;
   place-content: center;
   min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, .6), rgba(255, 40, 40, 0.5)), url('./assets/christmas.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .gifts__info {
+  padding: 1.5em;
+  background-color: white;
+  color: #222;
   text-align: center;
 }
 
