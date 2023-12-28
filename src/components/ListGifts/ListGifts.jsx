@@ -19,11 +19,14 @@ export function ListGifs({gifts, deleteGiftById}) {
                 :
                   gifts.map(gift => (
                     <li key={gift.id} className='gift'>
-                      <span>
-                        {gift.name}
-                      </span>
+                      <div>
+                        <span>
+                          {gift.name} x{gift.quantity}
+                        </span>
+                      </div>
                       <button
                         className='app__button'
+                        title='Eliminar Regalo'
                         onClick={() => handleClickDeleteGift(gift.id)}>
                         X
                       </button>

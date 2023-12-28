@@ -7,21 +7,25 @@ import './App.css'
 const INITIAL_GIFTS = [
       {
         id: 1,
-        name: 'Medias'
+        name: 'Medias',
+        quantity: 1
       },
       {
         id: 2,
-        name: 'Caramelos'
+        name: 'Caramelos',
+        quantity: 1
       },
       {
         id: 3,
-        name: 'Vitel Tone'
+        name: 'Vitel Tone',
+        quantity: 1
       }
 ]
 
 function App() {
   const [gifts, setGifts] = useState(INITIAL_GIFTS)
   const inputNameRef = useRef(null)
+  const inputQuantityRef = useRef(null)
 
   const isValidGift = (giftName) => {
     const existAlready = gifts.some(gift => gift.name.toLowerCase() === giftName)
@@ -39,7 +43,8 @@ function App() {
     const lastId = gifts.at(-1)?.id ?? 0
     const newGift = {
       id: lastId + 1,
-      name: nameNewGift
+      name: nameNewGift,
+      quantity: inputQuantityRef.current.value
     }
 
     setGifts(lastGifts => [...lastGifts, newGift])
@@ -65,7 +70,14 @@ function App() {
 
           <form className='gifts__form' onSubmit={handleSubmit}>
             <input type="text" className='gift__input gift__input-name' name='gift' ref={inputNameRef} placeholder='Tu nuevo regalo' required/>
-            <button type="submit" className='app__button gift__add'>
+            <input type="number"
+            className='gift__input gift__input-quantity'
+            name='quantity'
+            ref={inputQuantityRef} min={1}
+            defaultValue="1"
+            pattern='^[1-9]\d*$'
+            />
+            <button type="submit" title='Agregar regalo' className='app__button gift__add'>
               Agregar
             </button>
           </form>
@@ -77,6 +89,7 @@ function App() {
 
           <button
             className='app__button gifts__remove'
+            title='Eliminar todos los regalos'
             onClick={handleClickDelete}
           >
             Borrar Todo
