@@ -37,7 +37,7 @@ body {
 .app__button {
   padding: .5em .75em;
   border: 0;
-  background-color: rgb(197, 9, 9);
+  background-color: rgb(202, 55, 55);
   color: white;
   cursor: pointer;
   border-radius: .25em;

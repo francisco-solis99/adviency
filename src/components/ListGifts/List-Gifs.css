@@ -15,8 +15,33 @@
 
 
 .gift {
+  padding: .25em .75em;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  transition: background-color 200ms ease-in-out;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  & .gift__info {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  & .gift__image {
+    width: 35px;
+    aspect-ratio: 1 / 1;
+    max-width: 100%;
+    object-fit: contain;
+    margin-right: .15em;
+    transition: filter 300ms ease-in;
+
+    &:hover {
+      filter: grayscale(80%);
+    }
+  }
 
   & span {
     display: inline-block;
@@ -24,6 +49,6 @@
   }
 
   & button {
-    padding: .25em .5em;
+    padding: .25em .75em;
   }
 }

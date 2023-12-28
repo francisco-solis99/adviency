@@ -3,39 +3,45 @@ import {ListGifs} from './components/ListGifts/ListGifts'
 
 import './App.css'
 
-
-const INITIAL_GIFTS = [
-      {
-        id: 1,
-        name: 'Medias',
-        quantity: 1
-      },
-      {
-        id: 2,
-        name: 'Caramelos',
-        quantity: 1
-      },
-      {
-        id: 3,
-        name: 'Vitel Tone',
-        quantity: 1
-      }
-]
-
 function App() {
-  const [gifts, setGifts] = useState(INITIAL_GIFTS)
+  const [gifts, setGifts] = useState([])
   const inputNameRef = useRef(null)
   const inputQuantityRef = useRef(null)
+
+  const inputImageRef = useRef(null)
+
 
   useEffect(() => {
     const savedGifs = JSON.parse(window.localStorage.getItem('gifts')) ?? []
     setGifts(savedGifs)
-    console.log('effect', savedGifs)
   }, [])
 
-  const isValidGift = (giftName) => {
-    const existAlready = gifts.some(gift => gift.name.toLowerCase() === giftName)
-    return !existAlready;
+  const isInvalidGift = (gift) => {
+    const { name, image, quantity } = gift;
+
+    const typesError = {
+      'name': 'No valid gift, already exist in the gifts list',
+      'image': 'No valid image source, check your image input',
+      'quantity': 'No valid quantity, use the range of each gift between 1 and 9'
+    }
+
+    // Valid if exists
+    const existAlready = gifts.some(gift => gift.name.toLowerCase() === name.toLowerCase())
+    if(existAlready) return typesError['name'];
+
+    // Valid if there is valid Url img
+    try {
+       new URL(image)
+    } catch (error) {
+      return typesError['image']
+    }
+
+    // valid the quantity
+    const isInvalidQuantity = quantity <= 0 || quantity > 9
+    if(isInvalidQuantity) return typesError['quantity']
+
+
+    return false;
   }
 
   const saveGifts = (gifts) => {
@@ -45,18 +51,18 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const nameNewGift = inputNameRef.current.value;
-
-    if(!isValidGift(nameNewGift.toLowerCase())) {
-      throw new Error('No valid gift, already exists in the gift list')
-    }
 
     const lastId = gifts.at(-1)?.id ?? 0
     const newGift = {
       id: lastId + 1,
-      name: nameNewGift,
-      quantity: inputQuantityRef.current.value
+      name: inputNameRef.current.value,
+      quantity: inputQuantityRef.current.value,
+      image: inputImageRef.current.value
     }
+
+    const errorMsg = isInvalidGift(newGift);
+    if(errorMsg) throw new Error(errorMsg)
+
 
     setGifts(lastGifts => [...lastGifts, newGift])
     saveGifts([...gifts, newGift])
@@ -83,15 +89,28 @@ function App() {
           <h1>Regalos</h1>
 
           <form className='gifts__form' onSubmit={handleSubmit}>
-            <input type="text" className='gift__input gift__input-name' name='gift' ref={inputNameRef} placeholder='Tu nuevo regalo' required/>
-            <input type="number"
-            className='gift__input gift__input-quantity'
-            name='quantity'
-            ref={inputQuantityRef} min={1}
-            defaultValue="1"
-            pattern='^[1-9]\d*$'
+            <input
+              type="text"
+              className='gift__input gift__input-name' name='gift'
+              ref={inputNameRef}
+              placeholder='Tu nuevo regalo' required
             />
-            <button type="submit" title='Agregar regalo' className='app__button gift__add'>
+            <input type="url"
+              placeholder='https//image...'
+              name='image'
+              ref={inputImageRef}
+              required
+            />
+            <input type="number"
+              className='gift__input gift__input-quantity'
+              name='quantity'
+              ref={inputQuantityRef} min={1}
+              defaultValue="1"
+              pattern='^[1-9]\d*$'
+            />
+            <button type="submit"
+              title='Agregar regalo' className='app__button gift__add'
+            >
               Agregar
             </button>
           </form>

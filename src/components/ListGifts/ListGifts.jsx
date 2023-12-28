@@ -19,9 +19,17 @@ export function ListGifs({gifts, deleteGiftById}) {
                 :
                   gifts.map(gift => (
                     <li key={gift.id} className='gift'>
-                      <div>
+                      <div className='gift__info'>
+                        <img
+                          className='gift__image'
+                          src={gift.image}
+                          alt={gift.name}
+                        />
                         <span>
-                          {gift.name} x{gift.quantity}
+                          {gift.name}
+                        </span>
+                        <span>
+                          {gift.quantity > 1 && `(${gift.quantity})`}
                         </span>
                       </div>
                       <button
