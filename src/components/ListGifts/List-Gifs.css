@@ -16,9 +16,9 @@
 
 .gift {
   display: flex;
+  justify-content: space-between;
 
   & span {
-    width: 100%;
     display: inline-block;
     font-size: 1rem;
   }
