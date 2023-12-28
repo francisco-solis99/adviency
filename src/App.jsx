@@ -4,7 +4,20 @@ import {ListGifs} from './components/ListGifts'
 import './App.css'
 
 
-const INITIAL_GIFTS = ['Medias', 'Caramelos', 'Vitel Tone']
+const INITIAL_GIFTS = [
+      {
+        id: 1,
+        name: 'Medias'
+      },
+      {
+        id: 2,
+        name: 'Caramelos'
+      },
+      {
+        id: 3,
+        name: 'Vitel Tone'
+      }
+]
 
 function App() {
   const [gifts, setGifts] = useState(INITIAL_GIFTS)
@@ -13,11 +26,22 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const lastId = gifts.at(-1)?.id ?? 0
 
-    const newGift = inputNameRef.current.value;
+    const newGift = {
+      id: lastId + 1,
+      name: inputNameRef.current.value
+    }
 
     setGifts(lastGifts => [...lastGifts, newGift])
     e.target.reset()
+  }
+
+  const deleteGiftById = (id) => {
+    const updatedGifts = [...gifts];
+    const giftIndex = updatedGifts.findIndex(gift => gift.id === id);
+    updatedGifts.splice(giftIndex, 1);
+    setGifts(() => updatedGifts)
   }
 
   const handleClickDelete = () => {
@@ -37,7 +61,7 @@ function App() {
             </button>
           </form>
 
-          <ListGifs gifts={gifts}/>
+          <ListGifs gifts={gifts} deleteGiftById ={deleteGiftById}/>
 
           <button className='gifts__remove' onClick={handleClickDelete}>
             Borrar Todo
