@@ -1,6 +1,4 @@
-#root {
-  max-width: 1280px;
-}
+
 
 .app__wrapper {
   display: grid;
@@ -34,11 +32,41 @@
     border: 0;
     background-color: rgb(197, 9, 9);
     color: white;
+    cursor: pointer;
   }
 }
 
 .gifts__list {
+  margin-top: 1em;
+  display: grid;
+  gap: .5em 0;
   text-align: left;
-  margin-top: .5em;
   list-style: none;
+}
+
+
+.gift {
+  display: flex;
+
+  & span {
+    width: 100%;
+  }
+
+  & button {
+    padding: .25em .5em;
+    border: 0;
+    background-color: rgb(197, 9, 9);
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.gifts__remove {
+  width: 100%;
+  margin-top: 2em;
+  padding: .5em .75em;
+  border: 0;
+  color: white;
+  background-color: rgb(197, 9, 9);
+  cursor: pointer;
 }
