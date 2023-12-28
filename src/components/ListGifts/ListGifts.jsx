@@ -1,6 +1,8 @@
 
 /* eslint-disable react/prop-types */
 
+import './List-Gifs.css'
+
 export function ListGifs({gifts, deleteGiftById}) {
 
   const handleClickDeleteGift = (id) => deleteGiftById(id)
@@ -11,7 +13,7 @@ export function ListGifs({gifts, deleteGiftById}) {
             {
               isEmpty
                 ?
-                  <li className="gifts__empty">
+                  <li className="gift__empty">
                     No hay regalos, agrega alguno
                   </li>
                 :

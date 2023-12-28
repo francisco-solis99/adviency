@@ -1,5 +1,5 @@
 import { useState, useRef} from 'react'
-import {ListGifs} from './components/ListGifts'
+import {ListGifs} from './components/ListGifts/ListGifts'
 
 import './App.css'
 

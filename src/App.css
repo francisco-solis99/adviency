@@ -36,30 +36,6 @@
   }
 }
 
-.gifts__list {
-  margin-top: 1em;
-  display: grid;
-  gap: .5em 0;
-  text-align: left;
-  list-style: none;
-}
-
-
-.gift {
-  display: flex;
-
-  & span {
-    width: 100%;
-  }
-
-  & button {
-    padding: .25em .5em;
-    border: 0;
-    background-color: rgb(197, 9, 9);
-    color: white;
-    cursor: pointer;
-  }
-}
 
 .gifts__remove {
   width: 100%;
