@@ -19,7 +19,26 @@
   text-align: center;
 }
 
-.gifts__list {
+.gifts__form {
+  display: flex;
   margin-top: .25rem;
+
+
+  & .gift__input {
+    padding: .25em;
+  }
+
+  & .gift__add {
+    padding: .25em .75em;
+    margin-left: .75em;
+    border: 0;
+    background-color: rgb(197, 9, 9);
+    color: white;
+  }
+}
+
+.gifts__list {
+  text-align: left;
+  margin-top: .5em;
   list-style: none;
 }

@@ -12,6 +12,13 @@ function App() {
         <div className='gifts__info'>
           <h1>Regalos</h1>
 
+          <form action="" className='gifts__form'>
+            <input type="text" className='gift__input gift__input-name' />
+            <button type="button" className='gift__add'>
+              Agregar
+            </button>
+          </form>
+
           <ul className='gifts__list'>
             {
               gifts.map(gift => (
