@@ -33,3 +33,19 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.app__button {
+  padding: .5em .75em;
+  border: 0;
+  background-color: rgb(197, 9, 9);
+  color: white;
+  cursor: pointer;
+  border-radius: .25em;
+  will-change: opacity;
+  transition: opacity 250ms ease-out;
+}
+
+.app__button:hover {
+  opacity: 0.85;
+
+}

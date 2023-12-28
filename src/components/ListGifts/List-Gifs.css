@@ -19,13 +19,11 @@
 
   & span {
     width: 100%;
+    display: inline-block;
+    font-size: 1rem;
   }
 
   & button {
     padding: .25em .5em;
-    border: 0;
-    background-color: rgb(197, 9, 9);
-    color: white;
-    cursor: pointer;
   }
 }
