@@ -1,4 +1,4 @@
-import { useState, useRef} from 'react'
+import { useState, useRef, useEffect} from 'react'
 import {ListGifs} from './components/ListGifts/ListGifts'
 
 import './App.css'
@@ -27,9 +27,20 @@ function App() {
   const inputNameRef = useRef(null)
   const inputQuantityRef = useRef(null)
 
+  useEffect(() => {
+    const savedGifs = JSON.parse(window.localStorage.getItem('gifts')) ?? []
+    setGifts(savedGifs)
+    console.log('effect', savedGifs)
+  }, [])
+
   const isValidGift = (giftName) => {
     const existAlready = gifts.some(gift => gift.name.toLowerCase() === giftName)
     return !existAlready;
+  }
+
+  const saveGifts = (gifts) => {
+    const giftsString = JSON.stringify(gifts)
+    window.localStorage.setItem('gifts', giftsString)
   }
 
   const handleSubmit = (e) => {
@@ -48,6 +59,7 @@ function App() {
     }
 
     setGifts(lastGifts => [...lastGifts, newGift])
+    saveGifts([...gifts, newGift])
     e.target.reset()
   }
 
@@ -56,10 +68,12 @@ function App() {
     const giftIndex = updatedGifts.findIndex(gift => gift.id === id);
     updatedGifts.splice(giftIndex, 1);
     setGifts(() => updatedGifts)
+    saveGifts(updatedGifts)
   }
 
   const handleClickDelete = () => {
     setGifts([])
+    saveGifts([])
   }
 
   return (
