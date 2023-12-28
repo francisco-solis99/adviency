@@ -23,6 +23,7 @@ export function ListGifs({gifts, deleteGiftById}) {
                         {gift.name}
                       </span>
                       <button
+                        className='app__button'
                         onClick={() => handleClickDeleteGift(gift.id)}>
                         X
                       </button>
