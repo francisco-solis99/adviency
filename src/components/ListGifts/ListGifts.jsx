@@ -25,12 +25,17 @@ export function ListGifs({gifts, deleteGiftById}) {
                           src={gift.image}
                           alt={gift.name}
                         />
-                        <span>
-                          {gift.name}
-                        </span>
-                        <span>
-                          {gift.quantity > 1 && `(${gift.quantity})`}
-                        </span>
+                        <div className='gift__details'>
+                          <p className='gift__name'>
+                            <span>
+                              {gift.name}
+                            </span>
+                            <span>
+                              {gift.quantity > 1 && `(${gift.quantity})`}
+                            </span>
+                          </p>
+                          <span className='gift__recipient'>{gift.recipient}</span>
+                        </div>
                       </div>
                       <button
                         className='app__button'

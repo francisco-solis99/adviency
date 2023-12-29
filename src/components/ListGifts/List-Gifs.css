@@ -30,6 +30,20 @@
     align-items: center;
   }
 
+  & .gift__details {
+    display: flex;
+    flex-direction: column;
+
+    & .gift__recipient {
+      font-size: .8rem;
+      color: gray;
+    }
+
+    & .gift__name {
+      font-weight: 500;
+    }
+  }
+
   & .gift__image {
     max-width: 40px;
     width: 100%;

@@ -9,6 +9,7 @@ export function FormAddGift({ createNewGift, gifts }) {
   const inputNameRef = useRef(null)
   const inputQuantityRef = useRef(null)
   const inputImageRef = useRef(null)
+  const inputRecipientRef = useRef(null)
 
   const isInvalidGift = (gift) => {
     const { name, image, quantity } = gift;
@@ -46,7 +47,8 @@ export function FormAddGift({ createNewGift, gifts }) {
       id: lastId + 1,
       name: inputNameRef.current.value,
       quantity: inputQuantityRef.current.value,
-      image: inputImageRef.current.value
+      image: inputImageRef.current.value,
+      recipient: inputRecipientRef.current.value
     }
 
     const errorMsg = isInvalidGift(newGift);
@@ -89,6 +91,16 @@ export function FormAddGift({ createNewGift, gifts }) {
           ref={inputQuantityRef} min={1}
           defaultValue="1"
           pattern='^[1-9]\d*$'
+        />
+      </label>
+      <label htmlFor="recipient" className='gift__label'>
+        <span>Destinatario:</span>
+        <input type="text"
+          className='gift__input'
+          name='recipient'
+          id='recipient'
+          placeholder='Goncy...'
+          ref={inputRecipientRef}
         />
       </label>
       <button type="submit"
