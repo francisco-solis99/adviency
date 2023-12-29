@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import { forwardRef } from "react"
+import './Dialog.css'
+
 
 export const Dialog = forwardRef(function Dialog({ children }, ref) {
   return (

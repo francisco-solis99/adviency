@@ -1,0 +1,21 @@
+/* Dialog */
+
+.gift__dialog {
+  position: relative;
+  min-width: 350px;
+  width: 80%;
+  max-width: 468px;
+  position: absolute;
+  padding: 2em;
+  border: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: .25rem;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.8;
+    backdrop-filter: blur(7px);
+  }
+}

@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 
 import { useRef } from 'react';
+import './FormddGift.css'
+
 
 export function FormAddGift({ createNewGift, gifts }) {
 
@@ -56,27 +58,39 @@ export function FormAddGift({ createNewGift, gifts }) {
 
   return (
     <form className='gifts__form' onSubmit={handleSubmit}>
-      <input
-        type="text"
-        className='gift__input gift__input-name'
-        name='gift'
-        ref={inputNameRef}
-        placeholder='Tu nuevo regalo' required
-      />
-      <input type="url"
-        className='gift__input'
-        placeholder='https//image...'
-        name='image'
-        ref={inputImageRef}
-        required
-      />
-      <input type="number"
-        className='gift__input gift__input-quantity'
-        name='quantity'
-        ref={inputQuantityRef} min={1}
-        defaultValue="1"
-        pattern='^[1-9]\d*$'
-      />
+      <label htmlFor="gift" className='gift__label'>
+        <span>Regalo:</span>
+        <input
+          type="text"
+          className='gift__input gift__input-name'
+          name='gift'
+          id='gift'
+          ref={inputNameRef}
+          placeholder='Tu nuevo regalo' required
+        />
+      </label>
+      <label htmlFor="image" className='gift__label'>
+        <span>Imagen:</span>
+        <input type="url"
+          className='gift__input'
+          placeholder='https//image...'
+          name='image'
+          id='image'
+          ref={inputImageRef}
+          required
+        />
+      </label>
+      <label htmlFor="quantity" className='gift__label'>
+        <span>Cantidad:</span>
+        <input type="number"
+          className='gift__input gift__input-quantity'
+          name='quantity'
+          id='quantity'
+          ref={inputQuantityRef} min={1}
+          defaultValue="1"
+          pattern='^[1-9]\d*$'
+        />
+      </label>
       <button type="submit"
         title='Agregar regalo'
         className='app__button gift__add'

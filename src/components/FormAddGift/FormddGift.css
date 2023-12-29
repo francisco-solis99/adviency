@@ -1,0 +1,40 @@
+/* Form */
+.gifts__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+
+  & .gift__label {
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      font-size: .9rem;
+      text-align: left;
+      color: rgb(70, 70, 70);
+    }
+  }
+
+  & .gift__input {
+    width: 100%;
+    margin-top: .25em;
+    display: inline-block;
+    padding: .75em;
+    border: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: .25em;
+  }
+
+  & .gift__add {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1.25em;
+    padding: .75em .5em;
+    font-weight: 600;
+
+    &:hover {
+      filter: drop-shadow(2px 0 0.2em #dc143c);
+    }
+  }
+}

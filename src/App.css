@@ -24,7 +24,7 @@
   border-radius: .25em;
 }
 
-/* Dialog */
+
 .gift__dialog-open {
   width: 100%;
   margin-top: 1em;
@@ -34,43 +34,15 @@
   }
 }
 
-.gift__dialog {
-  min-width: 350px;
-  width: 80%;
-  max-width: 468px;
+.gift__dialog-close {
   position: absolute;
-  padding: 2em;
+  right: 0;
+  top: 0;
   border: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  &::backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0.8;
-    backdrop-filter: blur(7px);
-  }
+  background-color: transparent;
+  cursor: pointer;
 }
 
-/* Form */
-.gifts__form {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-
-
-  & .gift__input {
-    width: 100%;
-    display: inline-block;
-    padding: .5em .75em;
-  }
-
-  & .gift__add {
-    width: 80%;
-    margin: 0 auto;
-    font-weight: 600;
-  }
-}
 
 /* Delete button */
 .gifts__info .gifts__remove {
