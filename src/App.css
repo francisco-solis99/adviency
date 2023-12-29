@@ -1,6 +1,5 @@
-
-
 .app__wrapper {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,39 +8,81 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+
+  & h1 {
+    color: #222;
+  }
 }
 
+/* Gifts container */
 .gifts__info {
   min-width: 320px;
   padding: 1.5em 2em;
   background-color: white;
   color: #222;
   text-align: center;
+  border-radius: .25em;
 }
 
+/* Dialog */
+.gift__dialog-open {
+  width: 100%;
+  margin-top: 1em;
+
+  &:hover {
+    filter: drop-shadow(2px 0 0.5em #dc143c);
+  }
+}
+
+.gift__dialog {
+  min-width: 350px;
+  width: 80%;
+  max-width: 468px;
+  position: absolute;
+  padding: 2em;
+  border: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.8;
+    backdrop-filter: blur(7px);
+  }
+}
+
+/* Form */
 .gifts__form {
-  display: grid;
-  grid-template-columns: 150px 150px 50px 100px;
-  margin-top: .75em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 
 
   & .gift__input {
+    width: 100%;
     display: inline-block;
-    padding: .25em;
+    padding: .5em .75em;
   }
 
   & .gift__add {
-    margin-left: .75em;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 600;
   }
 }
 
-
-.gifts__remove {
-  width: 100%;
+/* Delete button */
+.gifts__info .gifts__remove {
+  width: 70%;
   margin-top: 2em;
-  padding: .5em .75em;
-  border: 0;
+  background-color: transparent;
+  color: #222;
+  border: 1px solid rgb(122, 122, 122);
+  transition: all ease-in-out 200ms;
+}
+
+.gifts__info .gifts__remove:hover {
+  background-color: rgba(220, 20, 60);
   color: white;
-  background-color: rgb(197, 9, 9);
-  cursor: pointer;
 }
