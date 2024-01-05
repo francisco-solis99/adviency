@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useRef } from 'react';
-import './FormddGift.css'
+import './FormAddEditGift.css'
 
 
 export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGift, giftToUpdate}) {
@@ -85,6 +85,8 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           ref={inputNameRef}
           defaultValue={giftToUpdate?.name ?? ''}
           placeholder='Tu nuevo regalo' required
+          tabIndex="4"
+          aria-describedby="name-gift"
         />
       </label>
       <label htmlFor="image" className='gift__label'>
@@ -97,6 +99,8 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           ref={inputImageRef}
           defaultValue={giftToUpdate?.image ?? ''}
           required
+          tabIndex="5"
+          aria-describedby="image-validation"
         />
       </label>
       <label htmlFor="quantity" className='gift__label'>
@@ -108,6 +112,8 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           ref={inputQuantityRef} min={1}
           defaultValue={giftToUpdate?.quantity ?? "1"}
           pattern='^[1-9]\d*$'
+          tabIndex="6"
+          aria-describedby="quantity-validation"
         />
       </label>
       <label htmlFor="recipient" className='gift__label'>
@@ -119,11 +125,14 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           placeholder='Goncy...'
           defaultValue={giftToUpdate?.recipient ?? ''}
           ref={inputRecipientRef}
+          tabIndex="7"
+          aria-describedby="recipient-validation"
         />
       </label>
       <button type="submit"
         title='Agregar regalo'
         className='app__button gift__add'
+        tabIndex="8"
       >
         {
           action === 'add' ? 'Agregar' : 'Editar'

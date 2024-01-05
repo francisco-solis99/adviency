@@ -8,7 +8,6 @@ import './App.css'
 function App() {
   const [gifts, setGifts] = useState([])
   const dialogRef = useRef(null)
-  // TODO: Maybe I could use a state for the content of the dialog when the elements context has to be dynamic or there are more modal than 1 in the page
   const [dialogContent, setDialogContent] = useState(null)
 
 
@@ -65,6 +64,7 @@ function App() {
           <h1>Regalos</h1>
 
           <button
+            tabIndex="1"
             className='app__button gift__dialog-open'
             onClick={() => {
               toggleDialog()
@@ -83,7 +83,7 @@ function App() {
             {
               dialogContent
             }
-            <button onClick={toggleDialog} className='gift__dialog-close' type='button'>
+            <button tabIndex="3" onClick={toggleDialog} className='gift__dialog-close' type='button'>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg>
             </button>
           </Dialog>
@@ -105,6 +105,7 @@ function App() {
           />
 
           <button
+          tabIndex="2"
             className='app__button gifts__remove'
             title='Eliminar todos los regalos'
             onClick={handleClickDelete}
