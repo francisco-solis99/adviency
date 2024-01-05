@@ -4,10 +4,20 @@
   flex-direction: column;
   gap: 1em;
 
+  & .gift__name-block {
+    display: flex;
+    gap: 0 .25em;
+
+    & .gift__surprise {
+      margin: 0;
+    }
+  }
+
 
   & .gift__label {
     display: flex;
     flex-direction: column;
+    margin-bottom: .25em;
 
     & span {
       font-size: .9rem;
@@ -18,7 +28,6 @@
 
   & .gift__input {
     width: 100%;
-    margin-top: .25em;
     display: inline-block;
     padding: .75em;
     border: 0;

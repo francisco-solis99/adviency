@@ -2,14 +2,19 @@
 
 import { useRef } from 'react';
 import './FormAddEditGift.css'
+import { generateRandomGiftName } from '../../services/gifts';
+import { useEffect } from 'react';
 
 
 export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGift, giftToUpdate}) {
-
+  const formRef = useRef(null);
   const inputNameRef = useRef(null)
   const inputQuantityRef = useRef(null)
   const inputImageRef = useRef(null)
   const inputRecipientRef = useRef(null)
+
+  // Reset the form
+  useEffect(() => formRef.current.reset())
 
   const isInvalidGift = (gift) => {
     const { name, image, quantity } = gift;
@@ -70,24 +75,41 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
     }
 
     runActionGift(gift)
-    e.target.reset()
   }
 
+  const handleClickGetRandomGift = () => {
+    const randomGiftName = generateRandomGiftName()
+    inputNameRef.current.value = randomGiftName
+  }
+
+
   return (
-    <form className='gifts__form' onSubmit={handleSubmit}>
+    <form className='gifts__form' onSubmit={handleSubmit} ref={formRef}>
       <label htmlFor="gift" className='gift__label'>
         <span>Regalo:</span>
-        <input
-          type="text"
-          className='gift__input gift__input-name'
-          name='gift'
-          id='gift'
-          ref={inputNameRef}
-          defaultValue={giftToUpdate?.name ?? ''}
-          placeholder='Tu nuevo regalo' required
-          tabIndex="4"
-          aria-describedby="name-gift"
-        />
+        <div className='gift__name-block'>
+          <input
+            type="text"
+            className='gift__input gift__input-name'
+            name='gift'
+            id='gift'
+            ref={inputNameRef}
+            defaultValue={giftToUpdate?.name ?? ''}
+            placeholder='Tu nuevo regalo' required
+            tabIndex="4"
+            aria-describedby="name-gift"
+          />
+          {
+            action === 'add' && (
+              <button
+              type='button'
+              className='app__button gift__surprise'
+              onClick={handleClickGetRandomGift}>
+                Sorprendeme
+              </button>
+            )
+          }
+        </div>
       </label>
       <label htmlFor="image" className='gift__label'>
         <span>Imagen:</span>
