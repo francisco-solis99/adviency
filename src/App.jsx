@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { ListGifs } from './components/ListGifts/ListGifts'
 import { FormAddEditGift } from './components/FormAddEditGift/FormAddEditGift'
 import { Dialog } from './components/Dialog/Dialog'
+import { getGifts } from './services/gifts'
 
 import './App.css'
 
@@ -10,10 +11,8 @@ function App() {
   const dialogRef = useRef(null)
   const [dialogContent, setDialogContent] = useState(null)
 
-
   useEffect(() => {
-    const savedGifs = JSON.parse(window.localStorage.getItem('gifts')) ?? []
-    setGifts(savedGifs)
+    getGifts().then(gifts => setGifts(gifts))
   }, [])
 
   const saveGifts = (giftsList) => {
