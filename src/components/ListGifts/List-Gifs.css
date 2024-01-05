@@ -65,4 +65,9 @@
   & button {
     padding: .25em .75em;
   }
+
+  & .gift__controls {
+    display: flex;
+    gap: 0 .5em;
+  }
 }

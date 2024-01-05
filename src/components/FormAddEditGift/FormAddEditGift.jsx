@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import './FormddGift.css'
 
 
-export function FormAddGift({ createNewGift, gifts }) {
+export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGift, giftToUpdate}) {
 
   const inputNameRef = useRef(null)
   const inputQuantityRef = useRef(null)
@@ -39,22 +39,37 @@ export function FormAddGift({ createNewGift, gifts }) {
     return false;
   }
 
+  const runActionGift = (gift) => {
+    const actions = {
+      'add': () => {
+        const lastId = gifts.at(-1)?.id ?? 0
+        const newGift = {
+          id: lastId + 1,
+          ...gift
+        }
+
+        const errorMsg = isInvalidGift(newGift);
+        if (errorMsg) throw new Error(errorMsg)
+        createNewGift(newGift)
+      },
+      'edit': () => {
+        updateGift({id: giftToUpdate.id, ...gift})
+      }
+    }
+    actions[action]()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const lastId = gifts.at(-1)?.id ?? 0
-    const newGift = {
-      id: lastId + 1,
+    const gift = {
       name: inputNameRef.current.value,
       quantity: inputQuantityRef.current.value,
       image: inputImageRef.current.value,
       recipient: inputRecipientRef.current.value
     }
 
-    const errorMsg = isInvalidGift(newGift);
-    if (errorMsg) throw new Error(errorMsg)
-
-    createNewGift(newGift)
+    runActionGift(gift)
     e.target.reset()
   }
 
@@ -68,6 +83,7 @@ export function FormAddGift({ createNewGift, gifts }) {
           name='gift'
           id='gift'
           ref={inputNameRef}
+          defaultValue={giftToUpdate?.name ?? ''}
           placeholder='Tu nuevo regalo' required
         />
       </label>
@@ -79,6 +95,7 @@ export function FormAddGift({ createNewGift, gifts }) {
           name='image'
           id='image'
           ref={inputImageRef}
+          defaultValue={giftToUpdate?.image ?? ''}
           required
         />
       </label>
@@ -89,7 +106,7 @@ export function FormAddGift({ createNewGift, gifts }) {
           name='quantity'
           id='quantity'
           ref={inputQuantityRef} min={1}
-          defaultValue="1"
+          defaultValue={giftToUpdate?.quantity ?? "1"}
           pattern='^[1-9]\d*$'
         />
       </label>
@@ -100,6 +117,7 @@ export function FormAddGift({ createNewGift, gifts }) {
           name='recipient'
           id='recipient'
           placeholder='Goncy...'
+          defaultValue={giftToUpdate?.recipient ?? ''}
           ref={inputRecipientRef}
         />
       </label>
@@ -107,7 +125,9 @@ export function FormAddGift({ createNewGift, gifts }) {
         title='Agregar regalo'
         className='app__button gift__add'
       >
-        Agregar
+        {
+          action === 'add' ? 'Agregar' : 'Editar'
+        }
       </button>
     </form>
   )

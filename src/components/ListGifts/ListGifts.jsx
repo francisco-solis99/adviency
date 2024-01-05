@@ -3,9 +3,10 @@
 
 import './List-Gifs.css'
 
-export function ListGifs({gifts, deleteGiftById}) {
+export function ListGifs({gifts, deleteGiftById, editGift}) {
 
   const handleClickDeleteGift = (id) => deleteGiftById(id)
+  const handleClickEditGift = (gift) => editGift(gift)
   const isEmpty = gifts.length === 0;
 
   return (
@@ -37,12 +38,20 @@ export function ListGifs({gifts, deleteGiftById}) {
                           <span className='gift__recipient'>{gift.recipient}</span>
                         </div>
                       </div>
-                      <button
-                        className='app__button'
-                        title='Eliminar Regalo'
-                        onClick={() => handleClickDeleteGift(gift.id)}>
-                        X
-                      </button>
+                      <div className='gift__controls'>
+                        <button
+                          className='app__button'
+                          title='Editar Regalo'
+                          onClick={() => handleClickEditGift(gift)}>
+                          E
+                        </button>
+                        <button
+                          className='app__button'
+                          title='Eliminar Regalo'
+                          onClick={() => handleClickDeleteGift(gift.id)}>
+                          X
+                        </button>
+                      </div>
                     </li>
                   ))
             }
