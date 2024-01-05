@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGift, giftToUpdate}) {
   const formRef = useRef(null);
   const inputNameRef = useRef(null)
+  const inputPriceRef = useRef(null)
   const inputQuantityRef = useRef(null)
   const inputImageRef = useRef(null)
   const inputRecipientRef = useRef(null)
@@ -69,6 +70,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
 
     const gift = {
       name: inputNameRef.current.value,
+      price: inputPriceRef.current.value,
       quantity: inputQuantityRef.current.value,
       image: inputImageRef.current.value,
       recipient: inputRecipientRef.current.value
@@ -111,6 +113,21 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           }
         </div>
       </label>
+      <label htmlFor="price" className='gift__label'>
+        <span>Precio:</span>
+        <input type="text"
+          className='gift__input'
+          placeholder='100'
+          name='price'
+          id='price'
+          ref={inputPriceRef}
+          defaultValue={giftToUpdate?.price ?? ''}
+          required
+          tabIndex="5"
+          pattern='^[1-9]\d*$'
+          aria-describedby="image-validation"
+        />
+      </label>
       <label htmlFor="image" className='gift__label'>
         <span>Imagen:</span>
         <input type="url"
@@ -121,7 +138,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           ref={inputImageRef}
           defaultValue={giftToUpdate?.image ?? ''}
           required
-          tabIndex="5"
+          tabIndex="6"
           aria-describedby="image-validation"
         />
       </label>
@@ -134,7 +151,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           ref={inputQuantityRef} min={1}
           defaultValue={giftToUpdate?.quantity ?? "1"}
           pattern='^[1-9]\d*$'
-          tabIndex="6"
+          tabIndex="7"
           aria-describedby="quantity-validation"
         />
       </label>
@@ -147,14 +164,14 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           placeholder='Goncy...'
           defaultValue={giftToUpdate?.recipient ?? ''}
           ref={inputRecipientRef}
-          tabIndex="7"
+          tabIndex="8"
           aria-describedby="recipient-validation"
         />
       </label>
       <button type="submit"
         title='Agregar regalo'
         className='app__button gift__add'
-        tabIndex="8"
+        tabIndex="9"
       >
         {
           action === 'add' ? 'Agregar' : 'Editar'

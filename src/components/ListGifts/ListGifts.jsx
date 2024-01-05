@@ -32,7 +32,10 @@ export function ListGifs({gifts, deleteGiftById, editGift}) {
                               {gift.name}
                             </span>
                             <span>
-                              {gift.quantity > 1 && `(${gift.quantity})`}
+                              {gift.quantity > 1 && ` (${gift.quantity})`}
+                            </span>
+                            <span>
+                              {` - $ ${(gift.quantity * gift.price).toFixed(2)}`}
                             </span>
                           </p>
                           <span className='gift__recipient'>{gift.recipient}</span>
