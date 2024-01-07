@@ -101,7 +101,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
             ref={inputNameRef}
             defaultValue={giftToUpdate?.name ?? ''}
             placeholder='Tu nuevo regalo' required
-            tabIndex="4"
+            tabIndex="7"
             aria-describedby="name-gift"
           />
           {
@@ -127,7 +127,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           defaultValue={giftToUpdate?.price ?? ''}
           min={1}
           required
-          tabIndex="5"
+          tabIndex="8"
           pattern='^[1-9]\d*$'
           aria-describedby="image-validation"
         />
@@ -142,7 +142,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           ref={inputImageRef}
           defaultValue={giftToUpdate?.image ?? ''}
           required
-          tabIndex="6"
+          tabIndex="9"
           aria-describedby="image-validation"
         />
       </label>
@@ -156,7 +156,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           min={1}
           defaultValue={giftToUpdate?.quantity ?? "1"}
           pattern='^[1-9]\d*$'
-          tabIndex="7"
+          tabIndex="10"
           aria-describedby="quantity-validation"
         />
       </label>
@@ -169,14 +169,14 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           placeholder='Goncy...'
           defaultValue={giftToUpdate?.recipient ?? ''}
           ref={inputRecipientRef}
-          tabIndex="8"
+          tabIndex="11"
           aria-describedby="recipient-validation"
         />
       </label>
       <button type="submit"
         title='Agregar regalo'
         className='app__button gift__add'
-        tabIndex="9"
+        tabIndex="12"
       >
         {
           action === 'add' || action === 'duplicate' ? 'Agregar' : 'Editar'
