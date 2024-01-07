@@ -11,7 +11,11 @@ export function Preview({giftsList}) {
         gifts={giftsList}
         mode="preview"
       />
-      <button type="button" className="app__button preview__print-btn">
+      <button
+        type="button"
+        className="app__button preview__print-btn"
+        onClick={window.print}
+      >
         Imprimir
       </button>
     </div>
