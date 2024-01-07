@@ -18,16 +18,18 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
   useEffect(() => formRef.current.reset())
 
   const isInvalidGift = (gift) => {
-    const { name, image, quantity } = gift;
+    const { name, image, quantity, recipient } = gift;
 
     const typesError = {
-      'name': 'No valid gift, already exist in the gifts list',
+      'name': 'No valid gift, already exist in the gifts list to the same recipient',
       'image': 'No valid image source, check your image input',
       'quantity': 'No valid quantity, use the range of each gift between 1 and 9'
     }
 
     // Valid if exists
-    const existAlready = gifts.some(gift => gift.name.toLowerCase() === name.toLowerCase())
+    const existAlready = gifts.some(gift => {
+      return gift.name.toLowerCase() === name.toLowerCase() && gift.recipient.toLowerCase() === recipient.toLowerCase()
+    })
     if (existAlready) return typesError['name'];
 
     // Valid if there is valid Url img
@@ -60,6 +62,9 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
       },
       'edit': () => {
         updateGift({id: giftToUpdate.id, ...gift})
+      },
+      'duplicate': function() {
+        this.add()
       }
     }
     actions[action]()
@@ -75,7 +80,6 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
       image: inputImageRef.current.value,
       recipient: inputRecipientRef.current.value
     }
-
     runActionGift(gift)
   }
 
@@ -83,7 +87,6 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
     const randomGiftName = generateRandomGiftName()
     inputNameRef.current.value = randomGiftName
   }
-
 
   return (
     <form className='gifts__form' onSubmit={handleSubmit} ref={formRef}>
@@ -115,13 +118,14 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
       </label>
       <label htmlFor="price" className='gift__label'>
         <span>Precio:</span>
-        <input type="text"
+        <input type="number"
           className='gift__input'
           placeholder='100'
           name='price'
           id='price'
           ref={inputPriceRef}
           defaultValue={giftToUpdate?.price ?? ''}
+          min={1}
           required
           tabIndex="5"
           pattern='^[1-9]\d*$'
@@ -148,7 +152,8 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
           className='gift__input gift__input-quantity'
           name='quantity'
           id='quantity'
-          ref={inputQuantityRef} min={1}
+          ref={inputQuantityRef}
+          min={1}
           defaultValue={giftToUpdate?.quantity ?? "1"}
           pattern='^[1-9]\d*$'
           tabIndex="7"
@@ -174,7 +179,7 @@ export function FormAddEditGift({action = 'add', createNewGift, gifts, updateGif
         tabIndex="9"
       >
         {
-          action === 'add' ? 'Agregar' : 'Editar'
+          action === 'add' || action === 'duplicate' ? 'Agregar' : 'Editar'
         }
       </button>
     </form>

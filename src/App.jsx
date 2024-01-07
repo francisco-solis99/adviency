@@ -101,6 +101,17 @@ function App() {
                 />
               )
             }}
+            duplicateGift={(giftInfoDuplicate) => {
+              toggleDialog()
+              setDialogContent(
+                <FormAddEditGift
+                  action="duplicate"
+                  gifts={gifts}
+                  giftToUpdate={giftInfoDuplicate}
+                  createNewGift={createNewGift}
+                />
+              )
+            }}
           />
 
           <button

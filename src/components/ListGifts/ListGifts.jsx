@@ -3,12 +3,13 @@
 
 import './List-Gifs.css'
 
-export function ListGifs({gifts, deleteGiftById, editGift}) {
+export function ListGifs({gifts, deleteGiftById, editGift, duplicateGift}) {
 
   const handleClickDeleteGift = (id) => deleteGiftById(id)
   const handleClickEditGift = (gift) => editGift(gift)
+  const handleClickDuplicateGift = (gift) => duplicateGift(gift)
   const isEmpty = gifts.length === 0;
-  const totalToPay = gifts.reduce((acum, gift) => acum + Number(gift.price), 0)
+  const totalToPay = gifts.reduce((acum, gift) => acum + (Number(gift.price) * Number(gift.quantity)), 0)
 
   return (
     <>
@@ -49,6 +50,12 @@ export function ListGifs({gifts, deleteGiftById, editGift}) {
                             title='Editar Regalo'
                             onClick={() => handleClickEditGift(gift)}>
                             E
+                          </button>
+                          <button
+                            className='app__button'
+                            title='Duplicar Regalo'
+                            onClick={() => handleClickDuplicateGift(gift)}>
+                            D
                           </button>
                           <button
                             className='app__button'
