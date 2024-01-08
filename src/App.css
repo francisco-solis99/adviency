@@ -43,6 +43,14 @@
   cursor: pointer;
 }
 
+.preview__title {
+  font-size: 1.75rem;
+}
+
+.preview__print-btn {
+  margin-block-start: 1.25em;
+}
+
 
 /* Delete button */
 .gifts__info .gifts__remove {
