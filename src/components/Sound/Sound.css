@@ -1,0 +1,15 @@
+.sound__toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  aspect-ratio: 1/1;
+  padding: .25em;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  color: #dc143c;
+  border-radius: 50%;
+}
+
+.sound__toggle-btn:hover {
+  background-color: rgb(233, 233, 233);
+}

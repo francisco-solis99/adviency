@@ -24,6 +24,12 @@
   border-radius: .25em;
 }
 
+.gifts__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 .gift__dialog-open {
   width: 100%;

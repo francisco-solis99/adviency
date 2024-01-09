@@ -4,6 +4,7 @@ import { ListGifs } from './components/ListGifts/ListGifts'
 import { FormAddEditGift } from './components/FormAddEditGift/FormAddEditGift'
 import { Dialog } from './components/Dialog/Dialog'
 import { Preview } from './components/Preview/Preview'
+import { Sound } from './components/Sound/Sound'
 
 import './App.css'
 
@@ -68,7 +69,10 @@ function App() {
     <>
       <div className='app__wrapper'>
         <div className='gifts__info'>
-          <h1>Regalos</h1>
+          <header className='gifts__header'>
+            <h1>Regalos:</h1>
+            <Sound/>
+          </header>
 
           <button
             tabIndex="1"
