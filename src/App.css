@@ -16,6 +16,7 @@
 
 /* Gifts container */
 .gifts__info {
+  position: relative;
   min-width: 400px;
   padding: 1.5em 2em;
   background-color: white;

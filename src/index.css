@@ -34,7 +34,7 @@ a:hover {
 }
 
 
-
+/* App button */
 .app__button {
   padding: .5em .75em;
   border: 0;
@@ -49,3 +49,4 @@ a:hover {
 .app__button:hover {
   opacity: 0.85;
 }
+
