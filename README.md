@@ -9,10 +9,10 @@ Está es una inciativa de [@goncy](https://twitter.com/goncy).
 
 ## Screenshots
 
-![Adviency-1](adviency-1.png)
-![Adviency-2](adviency-2.png)
-![Adviency-3](adviency-3.png)
-![Adviency-4](adviency-4.png)
+![Adviency-1](./adviency-1.png)
+![Adviency-2](./adviency-2.png)
+![Adviency-3](./adviency-3.png)
+![Adviency-4](./adviency-4.png)
 
 
 ## Tecnologías y Herramientas
